@@ -1,0 +1,16 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:14.17.3
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm install -g @angular/cli
+      - run: npm run build -- --prod
+      - run: ng test
+      - deploy:
+          name: Deploy to Production
+          command: |
+            npm run deploy-prod
