@@ -3,11 +3,12 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:14.17.3
+      - image: circleci/node:18.15.0
     steps:
       - checkout
       - run: npm install
       - run: npm install -g @angular/cli
+      - run: npm i primeng primeicons
       - run: npm run build -- --prod
       - run: ng test
       - deploy:
