@@ -10,7 +10,7 @@ jobs:
     steps:
       - checkout
       - run: npm ci
-      - run: npm install -g @angular/cli
+      - run: sudo npm install -g @angular/cli
       - run: ng build --prod
   test:
     docker:
@@ -18,5 +18,5 @@ jobs:
     steps:
       - checkout
       - run: npm ci
-      - run: npm install -g @angular/cli
+      - run: sudo npm install -g @angular/cli
       - run: ng test --watch=false
