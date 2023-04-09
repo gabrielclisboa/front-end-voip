@@ -33,7 +33,4 @@ jobs:
           command: sudo npm install -g vercel
       - run:
           name: Deploy to Vercel
-          command: vercel deploy --token $VERCEL_TOKEN --prod
-
-  env:
-    VERCEL_TOKEN: VPmsESzrWLduEWuGttFOV8oD
+          command: vercel deploy --token VPmsESzrWLduEWuGttFOV8oD --prod
