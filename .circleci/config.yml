@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.1.0
-  vercel: vercel/vercel@0.0.6
+  vercel: i-am-jeetu/vercel-orb@1.0.0
 
 jobs:
   build:
