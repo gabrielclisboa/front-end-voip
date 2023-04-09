@@ -18,4 +18,5 @@ jobs:
     steps:
       - checkout
       - run: npm ci
+      - run: npm install -g @angular/cli
       - run: ng test --watch=false
