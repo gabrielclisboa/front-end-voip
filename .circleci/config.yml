@@ -1,22 +1,39 @@
 version: 2.1
 
+orbs:
+  node: circleci/node@5.1.0
+  vercel: vercel/vercel@0.0.6
+
 jobs:
   build:
     docker:
-      - image: circleci/node:18.15
-    working_directory: ~/app
+      - image: cimg/node:16.13
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package-lock.json" }}
-            - v1-dependencies-
-      - run: npm install
-      - save_cache:
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
-      - run: npm install -g @angular/cli
-      - run: npm i primeng primeicons
-      - run: npm run build -- --prod
-      - run: ng test
+      - run: npm ci
+      - run: sudo npm install -g @angular/cli
+      - run: ng build --configuration=production
+
+  test:
+    docker:
+      - image: cimg/node:16.13
+    steps:
+      - checkout
+      - run: npm ci
+      - run: sudo npm install -g @angular/cli
+      - run: ng test --watch=false
+
+  deploy:
+    executor: vercel/default
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Install Vercel CLI
+          command: sudo npm install -g vercel
+      - run:
+          name: Deploy to Vercel
+          command: vercel deploy --token $VERCEL_TOKEN --prod
+
+  env:
+    VERCEL_TOKEN: VPmsESzrWLduEWuGttFOV8oD
