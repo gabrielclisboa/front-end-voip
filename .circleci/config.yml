@@ -2,7 +2,6 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.1.0
-  vercel: vercel/vercel@0.0.6
 
 jobs:
   build:
@@ -13,7 +12,6 @@ jobs:
       - run: npm ci
       - run: sudo npm install -g @angular/cli
       - run: ng build --configuration=production
-
   test:
     docker:
       - image: cimg/node:16.13
@@ -22,15 +20,3 @@ jobs:
       - run: npm ci
       - run: sudo npm install -g @angular/cli
       - run: ng test --watch=false
-
-  deploy:
-    executor: vercel/default
-    steps:
-      - attach_workspace:
-          at: ~/project
-      - run:
-          name: Install Vercel CLI
-          command: sudo npm install -g vercel
-      - run:
-          name: Deploy to Vercel
-          command: vercel deploy --token VPmsESzrWLduEWuGttFOV8oD --prod
