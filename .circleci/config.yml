@@ -12,6 +12,7 @@ jobs:
       - run: npm ci
       - run: sudo npm install -g @angular/cli
       - run: ng build --configuration=production
+      - run: git status -v
   test:
     docker:
       - image: cimg/node:16.13
