@@ -28,7 +28,7 @@ jobs:
       - checkout
       - run: npm ci
       - run: sudo npm i -g vercel@latest
-      - run: vercel --prod --name my-project --token $VERCEL_TOKEN
+      - run: vercel --prod --name front-end-voip --token $VERCEL_TOKEN
 
 workflows:
   build-and-test:
@@ -39,3 +39,6 @@ workflows:
           requires:
             - build
             - test
+          filters:
+            branches:
+              only: master
