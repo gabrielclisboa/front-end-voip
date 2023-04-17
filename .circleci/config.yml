@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.1.0
+
 jobs:
   build:
     docker:
@@ -20,6 +21,8 @@ jobs:
       - run: npm ci
       - run: sudo npm install -g @angular/cli
       - run: ng test --watch=false
+    environment:
+      CHROME_BIN: /usr/bin/google-chrome
 
   deploy:
     docker:
@@ -41,4 +44,4 @@ workflows:
             - test
           filters:
             branches:
-              only: master
+              only: main
