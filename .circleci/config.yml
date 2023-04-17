@@ -20,7 +20,8 @@ jobs:
       - checkout
       - run: npm ci
       - run: sudo npm install -g @angular/cli @angular-eslint/schematics
-      - run: ng lint
+      - run: ng add @angular-eslint/schematics
+      - run: ng lint --fix
 
   deploy:
     docker:
