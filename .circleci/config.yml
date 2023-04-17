@@ -30,16 +30,17 @@ jobs:
       - checkout
       - run: npm ci
       - run: sudo npm i -g vercel@latest
-      - run: vercel --prod --token $VERCEL_TOKEN --confirm --scope=$VERCEL_ORG_ID
+      - run: vercel --prod --token $VERCEL_TOKEN --confirm --scope=$VERCEL_ORG_ID voip
 
 workflows:
   build-and-test:
     jobs:
       - build
-      - test
+      - test:
+           requires:
+             - build
       - deploy:
           requires:
-            - build
             - test
           filters:
             branches:
