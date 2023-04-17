@@ -10,9 +10,7 @@ import { RippleModule } from 'primeng/ripple';
 
 
 @NgModule({
-  declarations: [
-    HeaderComponent
-  ],
+  declarations: [HeaderComponent],
   imports: [
     CommonModule,
     HeaderRoutingModule,
@@ -22,8 +20,6 @@ import { RippleModule } from 'primeng/ripple';
     BrowserAnimationsModule,
     BrowserModule
   ],
-  exports:[
-    HeaderComponent
-  ]
+  exports:[HeaderComponent]
 })
 export class HeaderModule { }
