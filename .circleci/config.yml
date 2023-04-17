@@ -20,9 +20,9 @@ jobs:
       - checkout
       - run: npm ci
       - run: sudo npm install -g @angular/cli
-      - run: ng test --watch=false
-    environment:
-      CHROME_BIN: /usr/bin/google-chrome
+      - run: |
+          export CHROME_BIN=/usr/bin/google-chrome
+          ng test --watch=false
 
   deploy:
     docker:
