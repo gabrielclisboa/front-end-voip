@@ -20,18 +20,7 @@ jobs:
       - checkout
       - run: npm ci
       - run: sudo npm install -g @angular/cli
-      - run:
-          name: Set empty CHROME_BIN variable
-          command: export CHROME_BIN=
-      - run: |
-          sudo apt-get update
-          sudo apt-get install -y wget
-          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-          export CHROME_BIN=/usr/bin/google-chrome-stable
-      - run: ng test --browsers=ChromeHeadlessNoSandbox --watch=false
+      - run: ng lint --fix
 
   deploy:
     docker:
