@@ -30,7 +30,7 @@ jobs:
       - checkout
       - run: npm ci
       - run: sudo npm i -g vercel@latest
-      - run: vercel --prod --name front-end-voip --token $VERCEL_TOKEN
+      - run: vercel --prod --token $VERCEL_TOKEN --confirm --scope $VERCEL_ORG_ID --project $VERCEL_PROJECT_ID
 
 workflows:
   build-and-test:
