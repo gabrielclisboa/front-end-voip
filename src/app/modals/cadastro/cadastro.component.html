@@ -1,0 +1,54 @@
+<p-dialog header="Cadastro" [(visible)]="visible" [modal]="true" [responsive]="true" [style]="{width: '500px'}" (onHide)="hide()">
+
+  <form [formGroup]="registerForm">
+    <div class="p-field">
+      <label for="companyName">Empresa/nome</label>
+      <input id="companyName" type="text" pInput formControlName="companyName" />
+      <small class="p-error" *ngIf="registerForm.controls['companyName'].invalid && (registerForm.controls['companyName'].dirty || registerForm.controls['companyName'].touched)">
+        Nome da empresa é obrigatório
+      </small>
+    </div>
+    <div class="p-field">
+      <label for="email">Email</label>
+      <input id="email" type="email" pInput formControlName="email" />
+      <small class="p-error" *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
+        Email inválido
+      </small>
+    </div>
+    <div class="p-field">
+      <label for="phone">Telefone</label>
+      <p-inputMask class="mask" type="text" formControlName="phone" mask="(99) 9 9999-9999"  placeholder="(99) 9 9999-9999"></p-inputMask>
+
+      <small class="p-error" *ngIf="registerForm.controls['phone'].invalid && (registerForm.controls['phone'].dirty || registerForm.controls['phone'].touched)">
+        Telefone inválido
+      </small>
+    </div>
+    <div class="p-field">
+      <label for="password">Senha</label>
+      <input id="password" type="password" pPassword formControlName="password" />
+      <pre>
+        <small class="form-text text-muted">
+        A senha deve conter:
+        • Uma letra maiúscula ou minúscula
+        • Pelo menos um número
+        • Pelo menos um caractere especial
+        • Mín. 8 dígitos, Máx. de 16 dígitos
+        </small>
+        </pre>
+      <small class="p-error" *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
+        Senha inválida. A senha deve conter pelo menos uma letra maiúscula ou minúscula, um número, um caracter especial e ter no mínimo 8 e no máximo 16 caracteres.
+      </small>
+    </div>
+    <div class="p-field">
+      <label for="confirmPassword">Confirmação da senha</label>
+      <input id="confirmPassword" type="password" pPassword formControlName="confirmPassword" />
+      <small class="p-error" *ngIf="registerForm.controls['confirmPassword'].invalid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)">
+        As senhas não conferem
+      </small>
+    </div>
+  </form>
+  <div class="p-dialog-footer">
+    <button pButton type="button" label="Cancelar" (click)="hide()" class="p-button-secondary"></button>
+    <button pButton type="button" label="Cadastrar" (click)="save()" [disabled]="registerForm.invalid"></button>
+  </div>
+</p-dialog>

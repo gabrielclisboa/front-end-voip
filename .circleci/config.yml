@@ -1,0 +1,47 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.1.0
+
+jobs:
+  build:
+    docker:
+      - image: cimg/node:16.13
+    steps:
+      - checkout
+      - run: npm ci
+      - run: sudo npm install -g @angular/cli
+      - run: ng build --configuration=production
+
+  test:
+    docker:
+      - image: cimg/node:16.13
+    steps:
+      - checkout
+      - run: npm ci
+      - run: sudo npm install -g @angular/cli @angular-eslint/schematics
+      - run: ng add @angular-eslint/schematics
+      - run: ng lint --fix
+
+  deploy:
+    docker:
+      - image: cimg/node:16.13
+    steps:
+      - checkout
+      - run: npm ci
+      - run: sudo npm i -g vercel@latest
+      - run: vercel --prod --token $VERCEL_TOKEN --confirm --scope=$VERCEL_ORG_ID
+
+workflows:
+  build-and-test:
+    jobs:
+      - build
+      - test:
+           requires:
+             - build
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: main
