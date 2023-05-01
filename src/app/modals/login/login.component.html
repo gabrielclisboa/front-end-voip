@@ -1,0 +1,26 @@
+<p-dialog header="Login" [(visible)]="visible" [modal]="true" [responsive]="true" [style]="{width: '500px'}" (onHide)="hide()">
+    <form [formGroup]="loginForm">
+      <div class="p-field">
+        <label for="email">Email</label>
+        <input id="email" type="email" pInput formControlName="email" />
+        <small class="p-error" *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
+          Email inválido
+        </small>
+      </div>
+      <div class="p-field">
+        <label for="password">Senha</label>
+        <input id="password" type="password" pPassword formControlName="password" />
+        <small class="p-error" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+          Senha inválida
+        </small>
+      </div>
+      <div class="p-field">
+        <a href="#">Esqueceu a senha?</a>
+      </div>
+    </form>
+    <div class="p-dialog-footer">
+      <button pButton type="button" label="Cancelar" (click)="hide()" class="p-button-secondary"></button>
+      <button pButton type="button" label="Entrar" (click)="login()" [disabled]="loginForm.invalid"></button>
+    </div>
+  </p-dialog>
+  
