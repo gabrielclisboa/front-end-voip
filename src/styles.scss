@@ -1,5 +1,4 @@
 @import url('https://rsms.me/inter/inter.css');
-@import '~primeicons/primeicons.css';
 body {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
@@ -19,4 +18,35 @@ button {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+
+.p-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.p-field label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.p-field input,
+.p-field select,
+.p-field textarea {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+}
+
+.p-field input:focus,
+.p-field select:focus,
+.p-field textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #007ad9;
+  border-color: #007ad9;
+}
+.mask {
+  width: 100%;
 }
