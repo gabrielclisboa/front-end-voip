@@ -1,128 +1,98 @@
 <div class="container">
   <div class="row">
-    <div class="col-10">
+    <div class="col-lg-10">
       <form [formGroup]="form">
         <div class="row">
-          <div class="col-8">
+          <div class="col-lg-8">
             <h3>Converta seus textos em fala</h3>
             <textarea
               rows="20"
-              cols="80"
+              cols="20"
               pInputTextarea
               formControlName="texto"
+              class="form-control form-control-lg"
+              style="resize: vertical;"
             ></textarea>
           </div>
 
-          <div class="col-4">
-            <div class="row">
-              <div class="col-12 d-flex justify-content-end">
-                <button
-                  pButton
-                  label="Login"
-                  class="p-button-raised login-button"
-                  (click)="showLogin = true"
-                ></button>
-              </div>
-            </div>
 
-            <div class="row mt-3">
-              <div class="mt-3">
-                <div class="col-12">
-                  <label class="label-dropdown" for="dropdown-idioma"
-                    >Idioma</label
-                  >
-                </div>
-                <div class="col-12">
-                  <p-dropdown
-                    id="dropdown-idioma"
-                    formControlName="idioma"
-                    [options]="idioma"
-                    optionLabel="name"
-                    autoWidth="false"
-                    [style]="{ width: '100%' }"
-                  ></p-dropdown>
-                </div>
-              </div>
-
-              <div class="mt-3">
-                <div class="col-12">
-                  <label class="label-dropdown" for="dropdown-voz">Voz</label>
-                </div>
-                <div class="col-12">
-                  <p-dropdown
-                    id="dropdown-voz"
-                    formControlName="voz"
-                    [options]="vozes"
-                    optionLabel="name"
-                    autoWidth="false"
-                    [style]="{ width: '100%' }"
-                  ></p-dropdown>
-                </div>
-              </div>
-
-              <div class="mt-3">
-                <div class="col-12">
-                  <label class="label-slider"
-                    >Velocidade da fala :
-                    {{ this.form.get("velocidade")?.value }}x</label
-                  >
-                </div>
-                <div class="col-12 mt-2">
-                  <p-slider
-                    [min]="1"
-                    [max]="3"
-                    [step]="0.1"
-                    formControlName="velocidade"
-                    class="w-full"
-                  ></p-slider>
-                </div>
-              </div>
-
-              <div class="mt-3">
-                <div class="col-12">
-                  <label class="label-slider"
-                    >Tom : {{ this.form.get("tom")?.value }}x</label
-                  >
-                </div>
-                <div class="col-12 mt-2">
-                  <p-slider
-                    [min]="1"
-                    [max]="3"
-                    [step]="0.1"
-                    formControlName="tom"
-                    class="w-full"
-                  ></p-slider>
-                </div>
-              </div>
-              <div class="mt-3">
-                <button
-                  label="Play"
-                  pButton
-                  class="p-button-raised play-button"
-                ></button>
-              </div>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-12 d-flex justify-content-center">
+          <div class="col-lg-4 mt-3 mt-lg-0">
+            <div class="d-flex justify-content-end">
               <button
                 pButton
-                label="Cadastre-se"
+                label="Login"
                 class="p-button-raised login-button"
-                (click)="showCadastro = true"
+                (click)="showLogin = true"
+              ></button>
+            </div>
+
+            <div class="mt-3">
+              <label class="label-dropdown" for="dropdown-idioma">Idioma</label>
+              <p-dropdown
+                id="dropdown-idioma"
+                formControlName="idioma"
+                [options]="idioma"
+                optionLabel="name"
+                autoWidth="false"
+                [style]="{ width: '100%' }"
+              ></p-dropdown>
+            </div>
+
+            <div class="mt-3">
+              <label class="label-dropdown" for="dropdown-voz">Voz</label>
+              <p-dropdown
+                id="dropdown-voz"
+                formControlName="voz"
+                [options]="vozes"
+                optionLabel="name"
+                autoWidth="false"
+                [style]="{ width: '100%' }"
+              ></p-dropdown>
+            </div>
+
+            <div class="mt-3">
+              <label class="label-slider">Velocidade da fala: {{ this.form.get("velocidade")?.value }}x</label>
+              <p-slider
+                [min]="1"
+                [max]="3"
+                [step]="0.1"
+                formControlName="velocidade"
+                class="w-100"
+              ></p-slider>
+            </div>
+
+            <div class="mt-3">
+              <label class="label-slider">Tom: {{ this.form.get("tom")?.value }}x</label>
+              <p-slider
+                [min]="1"
+                [max]="3"
+                [step]="0.1"
+                formControlName="tom"
+                class="w-100"
+              ></p-slider>
+            </div>
+
+            <div class="mt-3">
+              <button
+                label="Play"
+                pButton
+                class="p-button-raised play-button"
               ></button>
             </div>
           </div>
         </div>
       </form>
-      <app-login
-        [visible]="showLogin"
-        (visibleChange)="showLogin = $event"
-      ></app-login>
-      <app-cadastro
-        [visible]="showCadastro"
-        (visibleChange)="showCadastro = $event"
-      ></app-cadastro>
+
+      <div class="row mt-3">
+        <div class="col-12 d-flex justify-content-center">
+          <button
+            pButton
+            label="Cadastre-se"
+            class="p-button-raised login-button"
+            (click)="showCadastro = true"
+          ></button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

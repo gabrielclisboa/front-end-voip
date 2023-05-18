@@ -9,7 +9,6 @@ export class HeaderComponent implements OnInit {
   items: MenuItem[] = [];
   showMenu = false;
 
-
   constructor(private primengConfig: PrimeNGConfig) {}
 
   ngOnInit() {
