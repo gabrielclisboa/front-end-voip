@@ -7,9 +7,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MenuModule } from 'primeng/menu';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
+import { MenubarModule } from 'primeng/menubar';
 import { SidebarModule } from 'primeng/sidebar';
-
-
 @NgModule({
   declarations: [HeaderComponent],
   imports: [
@@ -20,7 +19,9 @@ import { SidebarModule } from 'primeng/sidebar';
     RippleModule,
     BrowserAnimationsModule,
     BrowserModule,
-    SidebarModule
+    MenubarModule,
+    SidebarModule,
+    
   ],
   exports:[HeaderComponent]
 })

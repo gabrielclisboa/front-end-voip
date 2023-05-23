@@ -1,24 +1,30 @@
-<header class="header bg-dark text-light py-3">
+<header class="header text-light py-3">
+  <p-button *ngIf="mobileMode" type="button" class="mr-2" (click)="sidebarVisible = !sidebarVisible"  icon="pi pi-align-justify"></p-button>
   <div class="d-flex align-items-center">
     <img src="../../../assets/logo.png" alt="Logo" class="mr-2" style="height: 50px;">
     <span class="logo-text">VOIP</span>
   </div>
-  <nav class="navbar navbar-expand-md navbar-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-      <span class="navbar-toggler-icon"></span>
+    <div *ngIf="!mobileMode">
+      <ul class="nav">
+        <li class="nav-item"><a href="/tutorial" class="nav-link">TUTORIAL</a></li>
+        <li class="nav-item"><a href="/home" class="nav-link">HOME</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">CONTATO</a></li>
+      </ul>
+    </div>
+  <div class="d-flex align-items-center">
+
+    <button type="button" pButton pRipple (click)="menu.toggle($event)" class="menu-button">
+      <span class="button-label">Perfil</span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav ml-auto">
+
+    <p-menu #menu [popup]="true" [model]="items" class="menu-right"></p-menu>
+
+    <p-sidebar *ngIf="mobileMode" [(visible)]="sidebarVisible" [position]="'left'" [modal]="true">
+      <ul class="nav flex-column">
         <li class="nav-item"><a href="#" class="nav-link">TUTORIAL</a></li>
         <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
         <li class="nav-item"><a href="#" class="nav-link">CONTATO</a></li>
       </ul>
-    </div>
-  </nav>
-  <div class="d-flex align-items-center">
-    <button type="button" pButton pRipple (click)="menu.toggle($event)" class="menu-button btn btn-light btn-lg d-none d-sm-block">
-      <span class="button-label">Perfil</span>
-    </button>
-    <p-menu #menu [popup]="true" [model]="items" class="menu-right"></p-menu>
+    </p-sidebar>
   </div>
 </header>

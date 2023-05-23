@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   items: MenuItem[] = [];
   showMenu = false;
+  mobileMode=false;
+  sidebarVisible = false;
 
   constructor(private primengConfig: PrimeNGConfig) {}
 
@@ -42,7 +44,15 @@ export class HeaderComponent implements OnInit {
             icon: 'pi pi-lock',
         }
     ]}
-  ];
+  ]
+  this.mobileMode = this.isMobile();
+  }
+
+  isMobile(): boolean {
+    const windowWidth = window.innerWidth;
+
+    console.log(windowWidth)
+    return windowWidth < 900; // Defina a largura de acordo com a resolução desejada para dispositivos móveis
   }
 
 }
