@@ -13,13 +13,13 @@
               class="form-control form-control-lg"
               style="resize: vertical"
             ></textarea>
-            <div *ngIf="isLogado">
+            <div *ngIf="!isLogado">
               <p>Tentativas restantes {{ qtdTeste }}</p>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-12">
-            <div class="row">
+            <div *ngIf="!isLogado" class="row">
               <div class="col-12 d-flex justify-content-end">
                 <button
                   pButton
@@ -119,7 +119,7 @@
             </div>
           </div>
 
-          <div class="row mt-3 mb-5">
+          <div *ngIf="!isLogado" class="row mt-3 mb-5">
             <div class="col-12 d-flex justify-content-center">
               <button
                 pButton
