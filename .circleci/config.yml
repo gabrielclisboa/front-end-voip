@@ -10,7 +10,7 @@ jobs:
     steps:
       - checkout
       - run: npm ci
-      - run: sudo npm install -g @angular/cli
+      - run: sudo npm install -g @angular/cli@15.2.5
       - run: ng build --configuration=production
 
   test:
@@ -19,7 +19,7 @@ jobs:
     steps:
       - checkout
       - run: npm ci
-      - run: sudo npm install -g @angular/cli @angular-eslint/schematics
+      - run: sudo npm install -g @angular/cli@15.2.5 @angular-eslint/schematics
       - run: ng add @angular-eslint/schematics
       - run: ng lint --fix
 
