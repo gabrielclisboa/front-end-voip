@@ -6,26 +6,26 @@ orbs:
 jobs:
   build:
     docker:
-      - image: cimg/node:16.13
+      - image: cimg/node:16.14
     steps:
       - checkout
       - run: npm ci
-      - run: sudo npm install -g @angular/cli
+      - run: sudo npm install -g @angular/cli@15.2.5
       - run: ng build --configuration=production
 
   test:
     docker:
-      - image: cimg/node:16.13
+      - image: cimg/node:16.14
     steps:
       - checkout
       - run: npm ci
-      - run: sudo npm install -g @angular/cli @angular-eslint/schematics
+      - run: sudo npm install -g @angular/cli@15.2.5 @angular-eslint/schematics
       - run: ng add @angular-eslint/schematics
       - run: ng lint --fix
 
   deploy:
     docker:
-      - image: cimg/node:16.13
+      - image: cimg/node:16.14
     steps:
       - checkout
       - run: npm ci
