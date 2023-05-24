@@ -109,7 +109,7 @@
               </div>
               <div class="col-6">
                 <button
-                  [disabled]="qtdTeste > 0 ? false : true"
+                  [disabled]="(qtdTeste > 0 ? false : true)"
                   pButton
                   (click)="qtdTeste = qtdTeste - 1"
                   label="Criar audio"
