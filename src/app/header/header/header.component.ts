@@ -19,7 +19,8 @@ export class HeaderComponent implements OnInit {
       label: 'Áudios',
       items: [{
           label: 'Meus áudios',
-          icon: 'pi pi-play'
+          icon: 'pi pi-play',
+          routerLink: ['/meusaudios']
       },
       {
           label: 'Recursos utilizados',

@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   vozes: any;
   showCadastro = false;
   showLogin = false;
+  valorTotal = 0;
 
   constructor(private fb: FormBuilder) {
     this.idioma = [{value:'pt-BR',name:'pt-BR'}];
@@ -27,7 +28,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.valorTotal=500;
+  }
 
   onSubmit() {
     if (this.form.valid) {

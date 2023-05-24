@@ -55,6 +55,22 @@
   font-size: 15px;
 }
 
+
+.carrinho-img {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  display: flex;
+}
+
+.total-text {
+  margin-top: 10px;
+}
+img{
+  display: flex;
+  align-items: center;
+}
+
 @media (max-width: 576px) {
   .login-button,
   .cadastro-button {
