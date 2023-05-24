@@ -13,6 +13,9 @@
               class="form-control form-control-lg"
               style="resize: vertical"
             ></textarea>
+            <div *ngIf="isLogado">
+              <p>Tentativas restantes {{ qtdTeste }}</p>
+            </div>
           </div>
 
           <div class="col-lg-4 col-md-12">
@@ -106,7 +109,9 @@
               </div>
               <div class="col-6">
                 <button
+                  [disabled]="qtdTeste > 0 ? false : true"
                   pButton
+                  (click)="qtdTeste = qtdTeste - 1"
                   label="Criar audio"
                   class="p-button-raised login-button"
                 ></button>
@@ -127,8 +132,7 @@
         </div>
       </form>
 
-
-      <p-card>
+      <p-card *ngIf="isLogado">
         <h2>Valor Total da Compra</h2>
         <div class="row">
           <div class="col-6">
@@ -158,6 +162,7 @@
         [visible]="showLogin"
         (visibleChange)="showLogin = $event"
       ></app-login>
+
       <app-cadastro
         [visible]="showCadastro"
         (visibleChange)="showCadastro = $event"

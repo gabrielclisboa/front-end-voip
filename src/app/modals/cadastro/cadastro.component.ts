@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CadastroComponent{
   @Input()
-  visible: boolean = false;
+  visible = false;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   registerForm: FormGroup;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-
+import { AuthService } from 'src/app/modals/login/login.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,8 +14,11 @@ export class HomeComponent implements OnInit {
   showCadastro = false;
   showLogin = false;
   valorTotal = 0;
+  isLogado = false;
 
-  constructor(private fb: FormBuilder) {
+  qtdTeste = 20;
+
+  constructor(private fb: FormBuilder,private authService: AuthService) {
     this.idioma = [{value:'pt-BR',name:'pt-BR'}];
     this.vozes = [{value:'francisca', name:'Francisca(neural)'}];
 
@@ -28,7 +31,16 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  login(event:any){
+    this.showCadastro = event;
+  }
   ngOnInit() {
+
+    this.authService.getLoginStatus().subscribe((status: boolean) => {
+      this.isLogado= status;
+    });
+
+
     this.valorTotal=500;
   }
 

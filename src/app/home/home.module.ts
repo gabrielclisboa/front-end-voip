@@ -31,6 +31,6 @@ import { CardModule } from 'primeng/card';
     CadastroModule,
     LoginModule,
     CardModule
-  ]
+  ],
 })
 export class HomeModule { }

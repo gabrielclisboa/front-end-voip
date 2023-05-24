@@ -5,7 +5,6 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { LoginComponent } from './login.component';
 
-
 @NgModule({
   declarations: [LoginComponent],
   imports: [
@@ -15,6 +14,6 @@ import { LoginComponent } from './login.component';
     DialogModule,
     ButtonModule
   ],
-  exports:[LoginComponent]
+  exports:[LoginComponent],
 })
 export class LoginModule { }

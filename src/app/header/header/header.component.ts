@@ -1,5 +1,6 @@
 import {MenuItem, PrimeNGConfig} from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../modals/login/login.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,10 +11,16 @@ export class HeaderComponent implements OnInit {
   showMenu = false;
   mobileMode=false;
   sidebarVisible = false;
+  isLogado = false;
 
-  constructor(private primengConfig: PrimeNGConfig) {}
+  constructor(private primengConfig: PrimeNGConfig,private authService: AuthService) {}
 
   ngOnInit() {
+    this.authService.getLoginStatus().subscribe((status: boolean) => {
+      this.isLogado = status;
+    });
+
+
     this.primengConfig.ripple = true;
     this.items = [{
       label: 'Áudios',
@@ -51,8 +58,6 @@ export class HeaderComponent implements OnInit {
 
   isMobile(): boolean {
     const windowWidth = window.innerWidth;
-
-    console.log(windowWidth)
     return windowWidth < 900; // Defina a largura de acordo com a resolução desejada para dispositivos móveis
   }
 

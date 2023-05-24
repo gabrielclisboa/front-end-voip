@@ -13,7 +13,7 @@
     </div>
   <div class="d-flex align-items-center">
 
-    <button type="button" pButton pRipple (click)="menu.toggle($event)" class="menu-button">
+    <button *ngIf="isLogado" type="button" pButton pRipple (click)="menu.toggle($event)" class="menu-button">
       <span class="button-label">Perfil</span>
     </button>
 
@@ -21,8 +21,8 @@
 
     <p-sidebar *ngIf="mobileMode" [(visible)]="sidebarVisible" [position]="'left'" [modal]="true">
       <ul class="nav flex-column">
-        <li class="nav-item"><a href="#" class="nav-link">TUTORIAL</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
+        <li class="nav-item"><a href="/tutorial" class="nav-link">TUTORIAL</a></li>
+        <li class="nav-item"><a href="/home" class="nav-link">HOME</a></li>
         <li class="nav-item"><a href="#" class="nav-link">CONTATO</a></li>
       </ul>
     </p-sidebar>

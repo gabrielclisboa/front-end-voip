@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { AuthService  } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,13 +10,13 @@ import { MessageService } from 'primeng/api';
 })
 export class LoginComponent  implements OnInit {
   @Input()
-  visible: boolean = false;
+  visible = false;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   loginForm!: FormGroup;
 
   //private messageService: MessageService
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,private authService: AuthService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -30,6 +31,7 @@ export class LoginComponent  implements OnInit {
 
   hide() {
     this.visibleChange.emit(false);
+    this.authService.login();
   }
 
   login() {
