@@ -30,7 +30,7 @@ jobs:
       - checkout
       - run: npm ci
       - run: sudo npm i -g vercel@latest
-      - run: vercel --prod --token $VERCEL_TOKEN --confirm --scope=$VERCEL_ORG_ID
+      - run: vercel --prod --token $VERCEL_TOKEN --yes --scope=$VERCEL_ORG_ID
 
 workflows:
   build-and-test:
