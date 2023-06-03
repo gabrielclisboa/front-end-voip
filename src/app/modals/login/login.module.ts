@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
-import { LoginComponent } from './login.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [LoginComponent],

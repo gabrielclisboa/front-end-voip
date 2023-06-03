@@ -8,7 +8,7 @@ import { HomeModule } from './home/home.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TutorialModule } from './tutorial/tutorial.module';
 import { LoginModule } from './modals/login/login.module';
-import { AuthService } from './modals/login/login.service';
+import { AuthService } from './service/auth.service';
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,6 +1,6 @@
 import {MenuItem, PrimeNGConfig} from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../modals/login/login.service';
+import { LoginService } from 'src/app/service/login.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,10 +13,12 @@ export class HeaderComponent implements OnInit {
   sidebarVisible = false;
   isLogado = false;
 
-  constructor(private primengConfig: PrimeNGConfig,private authService: AuthService) {}
+  constructor(private primengConfig: PrimeNGConfig,private loginService: LoginService) {
+    this.isLogado = this.loginService.isLoggedIn();
+  }
 
   ngOnInit() {
-    this.authService.getLoginStatus().subscribe((status: boolean) => {
+    this.loginService.loginStatusChanged.subscribe((status: boolean) => {
       this.isLogado = status;
     });
 

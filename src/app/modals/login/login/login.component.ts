@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { AuthService  } from './login.service';
+import { AuthService  } from '../../../service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +31,7 @@ export class LoginComponent  implements OnInit {
 
   hide() {
     this.visibleChange.emit(false);
-    this.authService.login();
+    this.authService.authenticate('ADM','123');
   }
 
   login() {
