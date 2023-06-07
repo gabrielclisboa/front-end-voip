@@ -1,51 +1,80 @@
 .container {
-  padding-top: 50px; // Adiciona 50 pixels de espaçamento superior
+  margin-bottom: 50px;
 }
-.login-button{
+
+.login-button {
   background-color: #75ECC8 !important;
   border-color: #75ECC8 !important;
   color: #000000 !important;
-  width: 12vw;
   font-size: 15px;
   height: auto;
+  margin-top: 5px;
 }
+
 .login-button:hover {
   background-color: #75ecc8b7 !important;
   border-color: #75ECC8 !important;
 }
 
-.play-button{
+.play-button {
   background-color: #7581EC !important;
   border-color: #7581EC !important;
   color: #000000 !important;
   font-size: 13px;
   height: auto;
 }
+
 .play-button:hover {
   background-color: #7581ecb1 !important;
   border-color: #7581ecb1 !important;
 }
 
-.cadastro-button{
+.cadastro-button {
   background-color: #75ECC8 !important;
   border-color: #75ECC8 !important;
   color: #000000 !important;
-  width: 12vw;
   font-size: 15px;
   height: auto;
 }
+
 .cadastro-button:hover {
   background-color: #75ecc8b7 !important;
   border-color: #75ECC8 !important;
 }
 
-.label-dropdown{
+.label-dropdown {
   font-size: 20px;
   color: #000000;
 }
+
 .p-dropdown {
   width: 100%;
 }
-.label-slider{
+
+.label-slider {
   font-size: 15px;
+}
+
+
+.carrinho-img {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  display: flex;
+}
+
+.total-text {
+  margin-top: 10px;
+}
+img{
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 576px) {
+  .login-button,
+  .cadastro-button {
+    width: 100%;
+
+  }
 }

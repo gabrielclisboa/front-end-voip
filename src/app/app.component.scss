@@ -1,5 +1,10 @@
 // Importe a fonte Inter do Google Fonts
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
 
 // Defina a fonte padrão do seu projeto como Inter
 $font-family-sans-serif: 'Inter', sans-serif;

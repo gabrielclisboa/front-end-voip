@@ -11,6 +11,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { SliderModule } from 'primeng/slider';
 import { CadastroModule } from '../modals/cadastro/cadastro.module';
 import { LoginModule } from '../modals/login/login.module';
+import { CardModule } from 'primeng/card';
+import { PagamentoModule } from '../modals/pagamento/pagamento.module';
+
 
 
 @NgModule({
@@ -28,7 +31,9 @@ import { LoginModule } from '../modals/login/login.module';
     DropdownModule,
     SliderModule,
     CadastroModule,
-    LoginModule
-  ]
+    LoginModule,
+    CardModule,
+    PagamentoModule
+  ],
 })
 export class HomeModule { }

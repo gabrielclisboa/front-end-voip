@@ -3,18 +3,23 @@
     <div class="col-10">
       <form [formGroup]="form">
         <div class="row">
-          <div class="col-8">
+          <div class="col-lg-8 col-md-12">
             <h3>Converta seus textos em fala</h3>
             <textarea
               rows="20"
-              cols="80"
+              cols="20"
               pInputTextarea
               formControlName="texto"
+              class="form-control form-control-lg"
+              style="resize: vertical"
             ></textarea>
+            <div *ngIf="!isLogado">
+              <p>Tentativas restantes {{ qtdTeste }}</p>
+            </div>
           </div>
 
-          <div class="col-4">
-            <div class="row">
+          <div class="col-lg-4 col-md-12">
+            <div *ngIf="!isLogado" class="row">
               <div class="col-12 d-flex justify-content-end">
                 <button
                   pButton
@@ -26,84 +31,95 @@
             </div>
 
             <div class="row mt-3">
-              <div class="mt-3">
-                <div class="col-12">
-                  <label class="label-dropdown" for="dropdown-idioma"
-                    >Idioma</label
-                  >
-                </div>
-                <div class="col-12">
-                  <p-dropdown
-                    id="dropdown-idioma"
-                    formControlName="idioma"
-                    [options]="idioma"
-                    optionLabel="name"
-                    autoWidth="false"
-                    [style]="{ width: '100%' }"
-                  ></p-dropdown>
-                </div>
+              <div class="mt-3 col-12">
+                <label class="label-dropdown" for="dropdown-idioma"
+                  >Idioma</label
+                >
               </div>
+              <div class="mt-3 col-12">
+                <p-dropdown
+                  id="dropdown-idioma"
+                  formControlName="idioma"
+                  [options]="idioma"
+                  optionLabel="name"
+                  autoWidth="false"
+                  [style]="{ width: '100%' }"
+                ></p-dropdown>
+              </div>
+            </div>
 
-              <div class="mt-3">
-                <div class="col-12">
-                  <label class="label-dropdown" for="dropdown-voz">Voz</label>
-                </div>
-                <div class="col-12">
-                  <p-dropdown
-                    id="dropdown-voz"
-                    formControlName="voz"
-                    [options]="vozes"
-                    optionLabel="name"
-                    autoWidth="false"
-                    [style]="{ width: '100%' }"
-                  ></p-dropdown>
-                </div>
+            <div class="row mt-3">
+              <div class="mt-3 col-12">
+                <label class="label-dropdown" for="dropdown-voz">Voz</label>
               </div>
+              <div class="mt-3 col-12">
+                <p-dropdown
+                  id="dropdown-voz"
+                  formControlName="voz"
+                  [options]="vozes"
+                  optionLabel="name"
+                  autoWidth="false"
+                  [style]="{ width: '100%' }"
+                ></p-dropdown>
+              </div>
+            </div>
 
-              <div class="mt-3">
-                <div class="col-12">
-                  <label class="label-slider"
-                    >Velocidade da fala :
-                    {{ this.form.get("velocidade")?.value }}x</label
-                  >
-                </div>
-                <div class="col-12 mt-2">
-                  <p-slider
-                    [min]="1"
-                    [max]="3"
-                    [step]="0.1"
-                    formControlName="velocidade"
-                    class="w-full"
-                  ></p-slider>
-                </div>
+            <div class="row mt-3">
+              <div class="col-12">
+                <label class="label-slider"
+                  >Velocidade da fala:
+                  {{ this.form.get("velocidade")?.value }}x</label
+                >
               </div>
+              <div class="col-12 mt-2">
+                <p-slider
+                  [min]="1"
+                  [max]="3"
+                  [step]="0.1"
+                  formControlName="velocidade"
+                  class="w-full"
+                ></p-slider>
+              </div>
+            </div>
 
-              <div class="mt-3">
-                <div class="col-12">
-                  <label class="label-slider"
-                    >Tom : {{ this.form.get("tom")?.value }}x</label
-                  >
-                </div>
-                <div class="col-12 mt-2">
-                  <p-slider
-                    [min]="1"
-                    [max]="3"
-                    [step]="0.1"
-                    formControlName="tom"
-                    class="w-full"
-                  ></p-slider>
-                </div>
+            <div class="row mt-3">
+              <div class="col-12">
+                <label class="label-slider"
+                  >Tom: {{ this.form.get("tom")?.value }}x</label
+                >
               </div>
-              <div class="mt-3">
+              <div class="col-12 mt-2">
+                <p-slider
+                  [min]="1"
+                  [max]="3"
+                  [step]="0.1"
+                  formControlName="tom"
+                  class="w-full"
+                ></p-slider>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-6">
                 <button
                   label="Play"
                   pButton
                   class="p-button-raised play-button"
                 ></button>
               </div>
+              <div class="col-6">
+                <button
+                  [disabled]="(qtdTeste > 0 ? false : true)"
+                  pButton
+                  (click)="qtdTeste = qtdTeste - 1"
+                  label="Criar audio"
+                  class="p-button-raised login-button"
+                ></button>
+              </div>
             </div>
           </div>
-          <div class="row mt-3">
+
+          <div *ngIf="!isLogado" class="row mt-3 mb-5">
             <div class="col-12 d-flex justify-content-center">
               <button
                 pButton
@@ -115,14 +131,51 @@
           </div>
         </div>
       </form>
+
+      <p-card *ngIf="isLogado">
+        <h2>Valor Total da Compra</h2>
+        <div class="row">
+          <div class="col-6">
+            <div class="d-flex align-items-center">
+              <img
+                src="../../../assets/carrinho.png"
+                alt="Carrinho"
+                class="carrinho-img"
+              />
+              <p class="total-text mr-3">
+                O valor total da compra de áudio é:
+                {{ valorTotal | currency : "BRL" }}
+              </p>
+            </div>
+          </div>
+          <div class="col-6">
+            <button
+              pButton
+              label="Comprar"
+              class="p-button-raised login-button"
+              (click)="showPagamento = true"
+            ></button>
+          </div>
+        </div>
+      </p-card>
+
+      
+      <app-pagamento
+      [visible]="showPagamento"
+      (visibleChange)="showPagamento = $event"
+    ></app-pagamento>
+      
       <app-login
         [visible]="showLogin"
         (visibleChange)="showLogin = $event"
       ></app-login>
+
       <app-cadastro
         [visible]="showCadastro"
         (visibleChange)="showCadastro = $event"
       ></app-cadastro>
+
+      
     </div>
   </div>
 </div>
