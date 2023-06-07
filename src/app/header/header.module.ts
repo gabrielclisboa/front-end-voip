@@ -20,8 +20,7 @@ import { SidebarModule } from 'primeng/sidebar';
     BrowserAnimationsModule,
     BrowserModule,
     MenubarModule,
-    SidebarModule,
-    
+    SidebarModule
   ],
   exports:[HeaderComponent]
 })

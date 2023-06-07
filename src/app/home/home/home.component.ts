@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   vozes: any;
   showCadastro = false;
   showLogin = false;
+  showPagamento=false;
   valorTotal = 0;
   isLogado = false;
 

@@ -31,10 +31,6 @@ export class HeaderComponent implements OnInit {
           icon: 'pi pi-play',
           routerLink: ['/meusaudios']
       },
-      {
-          label: 'Recursos utilizados',
-          icon: 'pi pi-briefcase'
-      }
       ]},
       {
           label: 'Pagamentos',
@@ -43,7 +39,7 @@ export class HeaderComponent implements OnInit {
               icon: 'pi pi-book',
           },
           {
-              label: 'Formas de Pagamento',
+              label: 'Contratar pacotes',
               icon: 'pi pi-credit-card'
           }
       ]},
@@ -52,8 +48,13 @@ export class HeaderComponent implements OnInit {
         items: [{
             label: 'Alterar Senha',
             icon: 'pi pi-lock',
+        },
+        {
+          label:'Logout',
+          icon:'pi pi-sign-out',
+          command:(() => this.loginService.logout())
         }
-    ]}
+    ]},
   ]
   this.mobileMode = this.isMobile();
   }

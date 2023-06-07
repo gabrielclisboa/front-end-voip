@@ -11,12 +11,12 @@ import { AuthService  } from '../../../service/auth.service';
 export class LoginComponent  implements OnInit {
   @Input()
   visible = false;
+
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   loginForm!: FormGroup;
-
-  //private messageService: MessageService
-  constructor(private fb: FormBuilder,private authService: AuthService) { }
+  
+  constructor(private fb: FormBuilder,private authService: AuthService,public messageService: MessageService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -25,24 +25,28 @@ export class LoginComponent  implements OnInit {
     });
   }
 
-  show() {
-    this.visible = true;
-  }
-
   hide() {
     this.visibleChange.emit(false);
-    this.authService.authenticate('ADM','123');
   }
 
   login() {
     if (this.loginForm.valid) {
-      // Aqui você pode enviar a solicitação de login para o servidor
-      // e fazer outras operações necessárias
-     // this.messageService.add({severity:'success', summary:'Login realizado', detail:'Bem-vindo!'});
-      this.hide();
-    }
-    else {
-      //this.messageService.add({severity:'error', summary:'Erro no login', detail:'Por favor, preencha todos os campos.'});
+      const email = this.loginForm.controls['email'].value;
+      const password = this.loginForm.controls['password'].value;
+
+      this.authService.authenticate(email, password).subscribe((isValid: boolean) => {
+        if (isValid) {
+          // Login válido
+          this.messageService.add({severity: 'success', summary: 'Login realizado', detail: 'Bem-vindo!'});
+          this.hide();
+        } else {
+          // Login inválido
+          this.messageService.add({severity: 'error', summary: 'Erro no login', detail: 'Credenciais inválidas.'});
+        }
+      });
+    } else {
+      // Campos inválidos
+      this.messageService.add({severity: 'error', summary: 'Erro no login', detail: 'Por favor, preencha todos os campos.'});
     }
   }
 }

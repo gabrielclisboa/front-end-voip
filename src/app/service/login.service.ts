@@ -9,6 +9,7 @@ export class LoginService {
 
   loginStatusChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() { }
 
   saveLoginInfo(username: string, password: string): void {

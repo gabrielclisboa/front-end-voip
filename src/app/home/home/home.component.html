@@ -153,11 +153,18 @@
               pButton
               label="Comprar"
               class="p-button-raised login-button"
+              (click)="showPagamento = true"
             ></button>
           </div>
         </div>
       </p-card>
 
+      
+      <app-pagamento
+      [visible]="showPagamento"
+      (visibleChange)="showPagamento = $event"
+    ></app-pagamento>
+      
       <app-login
         [visible]="showLogin"
         (visibleChange)="showLogin = $event"
@@ -167,6 +174,8 @@
         [visible]="showCadastro"
         (visibleChange)="showCadastro = $event"
       ></app-cadastro>
+
+      
     </div>
   </div>
 </div>

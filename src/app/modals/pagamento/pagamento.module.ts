@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PagamentoComponent } from './pagamento/pagamento.component';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
-import { LoginComponent } from './login/login.component';
+
+
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [
+    PagamentoComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     DialogModule,
     ButtonModule,
+    ReactiveFormsModule
   ],
-  exports:[LoginComponent],
+  exports:[PagamentoComponent]
 })
-export class LoginModule { }
+export class PagamentoModule { }
