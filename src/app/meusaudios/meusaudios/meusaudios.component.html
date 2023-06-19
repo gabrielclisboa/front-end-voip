@@ -18,13 +18,12 @@
           <td>{{ audio.formato }}</td>
           <td>{{ audio.dataCompra | date:'dd/MM/yyyy' }}</td>
           <td>
-            <audio controls>
-              <source [src]="audio.url" type="audio/{{ audio.formato }}">
-              Seu navegador não suporta o elemento de áudio.
+            <audio controls *ngIf="audio.url" preload="none">
+              <source [src]="audio.url" type="audio/wav">
             </audio>
           </td>
           <td>
-            <a [href]="audio.downloadUrl" download>Download</a>
+            <a [href]="audio.url" [download]="audio.download">Download</a>
           </td>
         </tr>
       </tbody>

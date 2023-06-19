@@ -1,0 +1,26 @@
+<div class="container">
+    <h1 class="text-center">Histórico de pagamentos</h1>
+  
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Tipo Pagamento</th>
+            <th>Data de compra</th>
+            <th>Valor</th>
+            <th>Download Nota fiscal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pagamento of pagamentos">
+            <td>{{ obterFormaPagamento(pagamento.id_type) }}</td>
+            <td>{{ pagamento.date_payment | date:'dd/MM/yyyy' }}</td>
+            <td>R${{ pagamento.value }}</td>
+            <td>
+              <a [href]="">Download</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

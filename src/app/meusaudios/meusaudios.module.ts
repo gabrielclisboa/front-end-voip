@@ -5,6 +5,7 @@ import { MeusaudiosRoutingModule } from './meusaudios-routing.module';
 import { MeusaudiosComponent } from './meusaudios/meusaudios.component';
 import { TableModule } from 'primeng/table';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { MeusAudiosService } from '../service/meusaudios.service';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     MeusaudiosRoutingModule,
     TableModule,
     BsDatepickerModule.forRoot()
-  ]
+  ],
+  providers:[MeusAudiosService]
 })
 export class MeusaudiosModule { }

@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit {
           items: [{
               label: 'Histórico de compras',
               icon: 'pi pi-book',
+              routerLink: ['/historicopagamentos']
           },
           {
               label: 'Contratar pacotes',

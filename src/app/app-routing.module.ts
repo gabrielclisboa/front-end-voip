@@ -17,6 +17,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./meusaudios/meusaudios.module').then((m) => m.MeusaudiosModule),
   },
+  {
+    path: 'historicopagamentos',
+    loadChildren: () =>
+      import('./historicopagamentos/historicopagamentos.module').then((m) => m.HistoricopagamentosModule),
+  },
 ];
 
 @NgModule({

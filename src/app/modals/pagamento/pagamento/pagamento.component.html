@@ -1,50 +1,73 @@
-<p-dialog header="Métodos de Pagamento" [(visible)]="visible" [modal]="true" [responsive]="true"
-  [style]="{width: '500px'}" (onHide)="hide()">
-  <div class="payment-modal-container">
-    <div class="payment-options">
-      <h2>Opções de Pagamento</h2>
-      <div class="payment-radio">
-        <label>
-          <input type="radio" name="paymentOption" value="pix" [(ngModel)]="selectedPaymentOption" />
-          PAGUE VIA PIX
-        </label>
+<p-dialog [(visible)]="visible" [modal]="true" [responsive]="true" [style]="{width: '50vw'}" (onHide)="hide()">
+  <form [formGroup]="paymentForm">
+    <div class="row">
+      <div class="col-8">
+        <div class="row">
+          <div class="title col-12">
+            <h4>Métodos de Pagamento</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="payment-radio">
+              <label>
+                <input type="radio" name="paymentOption" value="1" formControlName="paymentOption" />
+                PAGUE VIA PIX
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="payment-radio">
+              <label>
+                <input type="radio" name="paymentOption" value="2" formControlName="paymentOption" />
+                BOLETO
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="payment-radio">
+              <label>
+                <input type="radio" name="paymentOption" value="3" formControlName="paymentOption" />
+                Cartão de Crédito
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="payment-radio">
+              <label>
+                <input type="radio" name="paymentOption" value="4" formControlName="paymentOption" />
+                Paypal
+              </label>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="payment-radio">
-        <label>
-          <input type="radio" name="paymentOption" value="boleto" [(ngModel)]="selectedPaymentOption" />
-          BOLETO
-        </label>
-      </div>
-      <div class="payment-radio">
-        <label>
-          <input type="radio" name="paymentOption" value="creditCard" [(ngModel)]="selectedPaymentOption" />
-          Cartão de Crédito
-        </label>
-      </div>
-      <div class="payment-radio">
-        <label>
-          <input type="radio" name="paymentOption" value="paypal" [(ngModel)]="selectedPaymentOption" />
-          Paypal
-        </label>
+      <div class="col-4">
+        <div class="row">
+          <div class="title col-12">
+            <h4>Resumo</h4>
+          </div>
+        </div>
+        <p-card>
+          <ul>
+            <li>Valor da Gravação: R${{valorCompra }}</li>
+            <li>Formato: {{ recordingFormat }}</li>
+            <li>Valor Total: R${{ valorCompra }}</li>
+          </ul>
+        </p-card>
+
+        <div>
+          <label for="chkbox">Estou ciente e concordo com os termos e condições de venda</label>
+          <input type="checkbox" id="chkbox">
+        </div>
+        <button (click)="onSubmit()" pButton type="button" label="Finalizar Compra" class="p-button-primary"></button>
       </div>
     </div>
-    <div class="payment-summary">
-      <h2>Resumo</h2>
-      <div class="summary-card">
-        <p>Valor da Gravação: {{ recordingValue }}</p>
-        <p>Formato: {{ recordingFormat }}</p>
-        <p>Valor Total: {{ totalValue }}</p>
-      </div>
-
-    </div>
-  </div>
-
-
-  <div class="fancy-checkbox">
- 
-    <label for="chkbox">Estou ciente e concordo com os termos e condições de venda</label>
-    <input type="checkbox" id="chkbox">
-  </div>
-  <button pButton type="button" label="Finalizar Compra" class="p-button-primary"></button>
-
+  </form>
 </p-dialog>

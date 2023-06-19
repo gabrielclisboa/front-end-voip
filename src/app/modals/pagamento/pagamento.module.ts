@@ -4,7 +4,8 @@ import { PagamentoComponent } from './pagamento/pagamento.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
-
+import { CardModule } from 'primeng/card';
+import { PagamentoService } from 'src/app/service/pagamento.service';
 
 @NgModule({
   declarations: [
@@ -15,8 +16,11 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     DialogModule,
     ButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CardModule
   ],
-  exports:[PagamentoComponent]
+  exports:[PagamentoComponent],
+
+  providers:[PagamentoService]
 })
 export class PagamentoModule { }
