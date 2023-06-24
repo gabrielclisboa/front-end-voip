@@ -38,18 +38,11 @@ export class HeaderComponent implements OnInit {
               label: 'Histórico de compras',
               icon: 'pi pi-book',
               routerLink: ['/historicopagamentos']
-          },
-          {
-              label: 'Contratar pacotes',
-              icon: 'pi pi-credit-card'
           }
       ]},
       {
         label: 'Conta',
-        items: [{
-            label: 'Alterar Senha',
-            icon: 'pi pi-lock',
-        },
+        items: [
         {
           label:'Logout',
           icon:'pi pi-sign-out',

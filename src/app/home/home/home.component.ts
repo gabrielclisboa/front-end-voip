@@ -57,19 +57,19 @@ export class HomeComponent implements OnInit {
         this.vozes.push({ value: value, name: value });
       });
     });
-    
+
   }
 
   onSubmit() {
     if (this.form.valid) {
       this.qtdTeste = this.qtdTeste - 1;
       console.log('Formulário enviado com sucesso!');
-      
+
       const user = this.loginService.getLoggedInUsername();
       const text = this.form.controls['texto'].value;
       const voice_name = this.form.controls['voz'].value.value;
-      const voice_speed= this.form.controls['velocidade'].value;  
-      const pitch= this.form.controls['tom'].value;  
+      const voice_speed= this.form.controls['velocidade'].value;
+      const pitch= this.form.controls['tom'].value;
       this.HomeService.generateAudio(user, text, voice_name,voice_speed,pitch).pipe(
         tap((result: any) => {
           this.idAudio=result.id_audio;
@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
           // Perform error handling or display an error message to the user
         }
       });
-    } else {    
+    } else {
       console.log('Formulário inválido!');
       // Here you can display an error message to the user or take any appropriate action.
     }
@@ -101,12 +101,11 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  
+
 }
 
 function calcularValorTotal(caracteres: number): number {
-  // Aqui você pode definir a lógica para calcular o valor total com base na quantidade de caracteres.
-  // Por exemplo, supondo que cada caractere tenha um valor de R$0,10:
   const valorPorCaractere = 0.10;
-  return caracteres * valorPorCaractere;
+  const valorTotal = caracteres * valorPorCaractere;
+  return Number(valorTotal.toFixed(2));
 }
