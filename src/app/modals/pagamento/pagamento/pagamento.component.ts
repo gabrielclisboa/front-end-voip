@@ -25,7 +25,7 @@ export class PagamentoComponent {
   constructor(private pagamentoService: PagamentoService) {
     // Inicialize os valores do resumo do pagamento
     this.visible = false;
-    this.selectedPaymentOption = "R$ " + this.valorCompra + ",00"
+    this.selectedPaymentOption = "USD$ " + this.valorCompra + ",00"
     this.recordingValue = this.valorCompra; // Valor da gravação do áudio
     this.recordingFormat = '.WAV'; // Formato da gravação do áudio
     this.totalValue = this.valorCompra; // Valor total em reais
